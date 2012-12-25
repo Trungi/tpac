@@ -1,8 +1,14 @@
 <resources>
 
     <string name="app_name">TPac</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_text">Welcome to TPac!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">TPac welcome screen.</string>
+    <string name="new_game">New game</string>
+    <string name="new_level">Create custom level</string>
+    <string name="highscore">Top players</string>
+    <string name="continue_game">Continue</string>
+    <string name="not_implemented_yet">Not implemented yet!</string>
+    <string name="level_editor">Level editor</string>
 
 </resources>
