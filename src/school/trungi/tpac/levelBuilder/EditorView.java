@@ -1,6 +1,7 @@
 package school.trungi.tpac.levelBuilder;
 
 import android.content.Context;
+import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
@@ -28,6 +29,7 @@ public class EditorView extends BoxView {
 
 	public void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		canvas.drawText("TExtik", 0, 0, mPaint);
+		mPaint.setColor(0xff101010);
+		canvas.drawText("TExtik", 0, 100, mPaint);
 	}
 }

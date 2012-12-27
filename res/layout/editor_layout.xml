@@ -1,28 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
     
 	<school.trungi.tpac.levelBuilder.EditorView
 	 	android:id="@+id/editor"
 		android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tileSize="24" />
-	<RelativeLayout
-		android:layout_width="match_parent"
-		android:layout_height="match_parent" >
-		
-		<TextView
-		 android:id="@+id/text"
-			android:text="@string/level_editor"
-			android:visibility="visible"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_centerInParent="true"
-			android:gravity="center_horizontal"
-			android:textColor="#ff8888ff"
-			android:textSize="24sp"/>
-	</RelativeLayout>
+        android:layout_height="400dp"
+        android:background="#0000FF"
+        android:layout_marginBottom="20dp" />
 	
+	<school.trungi.tpac.levelBuilder.EditorButton
+	 	android:id="@+id/editor_up"
+		android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/editor"
+        android:background="#FF0000" 
+        android:layout_marginLeft="20dp"
+        android:onClick="incButton" />
+
+	<school.trungi.tpac.levelBuilder.EditorButton
+	 	android:id="@+id/editor_down"
+		android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/editor"
+        android:layout_toRightOf="@id/editor_up"
+        android:background="#FF0000" 
+        android:layout_marginLeft="20dp" 
+        android:onClick="incButton" />
+
+	<school.trungi.tpac.levelBuilder.EditorButton
+	 	android:id="@+id/editor_right"
+		android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/editor"
+        android:layout_toRightOf="@id/editor_down" 
+        android:background="#FF0000"
+        android:layout_marginLeft="20dp"
+        android:onClick="incButton"  />
+
+	<school.trungi.tpac.levelBuilder.EditorButton
+	 	android:id="@+id/editor_left"
+		android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/editor"
+        android:layout_toRightOf="@id/editor_right"
+        android:background="#FF0000"
+        android:layout_marginLeft="20dp"
+        android:onClick="incButton"  />
+
+	<school.trungi.tpac.levelBuilder.EditorButton
+	 	android:id="@+id/editor_item"
+		android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/editor"
+        android:layout_toRightOf="@id/editor_left"
+        android:background="#FF0000"
+        android:layout_marginLeft="20dp"
+        android:onClick="incButton"  />
 	
-</FrameLayout>
+</RelativeLayout>
