@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 import common.BoxRenderer;
@@ -16,7 +14,7 @@ public class EditorButton extends BoxView {
 	
 	public final char[] attrs = BoxTypes.list;
 	private BoxRenderer renderer = new BoxRenderer();
-	public int position = 0;
+	private int position = 0;
 	private String TAG = "EditorButton";
 	private Paint paint = new Paint();
 	protected int width, height;
@@ -48,17 +46,30 @@ public class EditorButton extends BoxView {
 	
 	@Override
 	public void onDraw(Canvas c) {
-		super.onDraw(c);
-		
+		super.onDraw(c);		
 		if (position >= attrs.length) {
 			position = 0;
+		}
+		if (position < 0 ) {
+			position = attrs.length - position;
 		}
 		
 		c.drawText(Character.toString(getCurrent()), width/2, height/2, paint);
 	}
 	
+	public void setPosition(int diff) {
+		position += diff;		
+		
+		if (position >= attrs.length) {
+			position = 0;
+		}
+		if (position < 0 ) {
+			position = attrs.length + position;
+		}
+	}
+	
 	public char getCurrent() {
-		return attrs[position];
+		return attrs[position];		
 	}
 	
 	@Override

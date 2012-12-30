@@ -17,27 +17,26 @@ public class EditorView extends BoxView {
 	public String TAG = "EditorView";
 	protected Map map = new Map(100, 100);
 	public int i = 0;
-	protected int m, n, width, height, wsize, hsize;
+	protected int width, height, wsize, hsize;
+	protected int m = 1, n = 1;
 	protected EditorButton button;
 
 	public EditorView(Context context) {
 		super(context);
-		editorInit();
+		editorInit(m, n);
 	}
 
 	public EditorView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		editorInit();
+		editorInit(m, n);
 	}
 
 	public EditorView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		editorInit();
+		editorInit(m, n);
 	}
 
-	protected void editorInit() {
-		m = 50;
-		n = 50;
+	protected void editorInit(int m, int n) {
 		map = new Map(m, n);
 		
 		this.setOnTouchListener(new View.OnTouchListener() {
@@ -53,8 +52,11 @@ public class EditorView extends BoxView {
 	public void setBox(int clickX, int clickY) {
 		 if (button != null) {
 			 int i = clickX / (width/m);
-			 int j = clickY / (height/n);
-			 map.set(i, j, new Box(button.getCurrent()));
+			 int j = clickY / (height/n) + 1;
+			 
+			 if (i < m && j < n) {
+			 	map.set(i, j, new Box(button.getCurrent()));
+			 }
 		 }
 	}
 	
@@ -69,12 +71,9 @@ public class EditorView extends BoxView {
 		for (int j=hsize; j<=height; j+= hsize) {
 			canvas.drawLine(0, j, width, j, paint);
 		}
-		canvas.drawText(map+ "", 100, 100, paint);
-		//canvas.drawText(map[0][0].toString(), 100, 100, paint);
-		
 		
 		for (int i=0; i<m; i++) {
-			for (int j=0; j<n; j++) { 
+			for (int j=0; j<n; j++) {
 				canvas.drawText(map.get(i, j).toString(), i*(width/m), j*(height/n), paint);
 			}
 		} 
@@ -83,6 +82,7 @@ public class EditorView extends BoxView {
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		this.width = w;
 		this.height = h;
+		
 		this.wsize = w / m;
 		this.hsize = h / n;
 	}
@@ -93,5 +93,11 @@ public class EditorView extends BoxView {
 	
 	public Map getMap() {
 		return this.map;
+	}
+
+	public void setMapSize(int x, int y) {
+		this.m = x;
+		this.n = y;
+		editorInit(x, y);
 	}
 }

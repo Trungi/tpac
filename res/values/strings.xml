@@ -23,5 +23,11 @@
     <string name="continuee">Continue</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_editor_welcome">EditorWelcomeActivity</string>
-
+    <string name="name_too_short">Name is too short</string>
+    <string name="name_too_long">Maximal length of name is 20 characters</string>
+    <string name="enter_dimension">Please enter dimensions of a map</string>
+    <string name="map_too_big">This map is too large</string>
+    <string name="file_exists">Map with this name already exists</string>
+    <string name="can_not_save">This map can not be saved</string>
+    
 </resources>
