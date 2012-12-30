@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
     }
     
     public void createNewLevel(View v) {
-    	Intent intent = new Intent(this, CreateLevelActivity.class);
+    	Intent intent = new Intent(this, EditorWelcomeActivity.class);
     	startActivity(intent);
     }
     

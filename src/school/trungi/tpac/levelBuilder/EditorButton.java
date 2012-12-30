@@ -5,32 +5,45 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 
 import common.BoxRenderer;
+import common.BoxTypes;
 import common.BoxView;
 
 public class EditorButton extends BoxView {
 	
-	public char[] attrs = {'a', 'b' };
+	public final char[] attrs = BoxTypes.list;
 	private BoxRenderer renderer = new BoxRenderer();
-	public int position = -1;
+	public int position = 0;
 	private String TAG = "EditorButton";
 	private Paint paint = new Paint();
 	protected int width, height;
 
 	public EditorButton(Context context) {
 		super(context);
-		// TODO Auto-generated constructor stub
+		initClick();
 	}
 
 	public EditorButton(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		// TODO Auto-generated constructor stub
+		initClick();
 	}
 
 	public EditorButton(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		// TODO Auto-generated constructor stub
+		initClick();
+	}
+	
+	public void initClick() {
+		this.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View arg0) {
+				position++;
+				invalidate();
+			}
+		});
 	}
 	
 	@Override
@@ -39,13 +52,9 @@ public class EditorButton extends BoxView {
 		
 		if (position >= attrs.length) {
 			position = 0;
-		} Log.d(TAG, "click! " + position + " " + this.getId());
-		
-		if (position != -1) {
-			paint.setColor(0x00FF00);
-			c.clipRect(0, 0, width, height);
-			c.drawColor(0x00FF00);
 		}
+		
+		c.drawText(Character.toString(getCurrent()), width/2, height/2, paint);
 	}
 	
 	public char getCurrent() {

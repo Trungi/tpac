@@ -1,7 +1,5 @@
 package school.trungi.tpac.levelBuilder;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -20,6 +18,7 @@ public class EditorView extends BoxView {
 	protected Map map = new Map(100, 100);
 	public int i = 0;
 	protected int m, n, width, height, wsize, hsize;
+	protected EditorButton button;
 
 	public EditorView(Context context) {
 		super(context);
@@ -52,9 +51,11 @@ public class EditorView extends BoxView {
 	}
 	
 	public void setBox(int clickX, int clickY) {
-		 int i = clickX / (width/m);
-		 int j = clickY / (height/n);
-		//map[i][j] = new Box();
+		 if (button != null) {
+			 int i = clickX / (width/m);
+			 int j = clickY / (height/n);
+			 map.set(i, j, new Box(button.getCurrent()));
+		 }
 	}
 	
 	@Override
@@ -84,5 +85,13 @@ public class EditorView extends BoxView {
 		this.height = h;
 		this.wsize = w / m;
 		this.hsize = h / n;
+	}
+	
+	public void setButton(EditorButton _button) {
+		button = _button;
+	}
+	
+	public Map getMap() {
+		return this.map;
 	}
 }

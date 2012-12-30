@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">TPac</string>
@@ -10,5 +11,17 @@
     <string name="continue_game">Continue</string>
     <string name="not_implemented_yet">Not implemented yet!</string>
     <string name="level_editor">Level editor</string>
+    <string name="save_map">Save!</string>
+    <string name="map_saved">Your map was successfuly saved!</string>
+    <string name="inc_position">inc</string>
+    <string name="dec_position">dec</string>
+    <string name="level_name">Level name:</string>
+    <string name="level_size">Level size:</string>
+    <string name="s20">20</string>
+    <string name="x">x</string>
+    <string name="level_name_hint">My new level</string>
+    <string name="continuee">Continue</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_editor_welcome">EditorWelcomeActivity</string>
 
 </resources>
