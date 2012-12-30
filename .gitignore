@@ -9,8 +9,8 @@
 #*.class
 
 # generated files
-#bin/
-#gen/
-
+bin/
+gen/
+!bin/tpac.apk
 # Local configuration file (sdk path, etc)
 local.properties

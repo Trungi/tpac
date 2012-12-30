@@ -16,6 +16,7 @@ public class EditorButton extends BoxView {
 	public int position = -1;
 	private String TAG = "EditorButton";
 	private Paint paint = new Paint();
+	protected int width, height;
 
 	public EditorButton(Context context) {
 		super(context);
@@ -31,7 +32,8 @@ public class EditorButton extends BoxView {
 		super(context, attrs, defStyle);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	@Override
 	public void onDraw(Canvas c) {
 		super.onDraw(c);
 		
@@ -41,12 +43,18 @@ public class EditorButton extends BoxView {
 		
 		if (position != -1) {
 			paint.setColor(0x00FF00);
-			c.clipRect(0, 0, 400, 400);
-			c.drawColor(0x00FFFF);
+			c.clipRect(0, 0, width, height);
+			c.drawColor(0x00FF00);
 		}
 	}
 	
 	public char getCurrent() {
 		return attrs[position];
+	}
+	
+	@Override
+	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+		width = w;
+		height = h;
 	}
 }

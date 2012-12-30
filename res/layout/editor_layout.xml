@@ -9,7 +9,7 @@
 	 	android:id="@+id/editor"
 		android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:background="#0000FF"
+        android:background="#FFFFFF"
         android:layout_marginBottom="20dp" />
 	
 	<school.trungi.tpac.levelBuilder.EditorButton

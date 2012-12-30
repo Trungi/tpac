@@ -9,7 +9,6 @@ import android.view.View;
 public class CreateLevelActivity extends Activity {
 
 	public final static String TAG = "CreateLevelActivity";
-	private EditorView editor;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -24,5 +23,9 @@ public class CreateLevelActivity extends Activity {
 		EditorButton b = (EditorButton) v;
 		b.position++;
 		b.invalidate();
+		
+		EditorView x = (EditorView) findViewById(R.id.editor);
+		x.i++;
+		x.invalidate();
 	}
 }
