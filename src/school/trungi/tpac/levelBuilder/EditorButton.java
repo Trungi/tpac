@@ -1,13 +1,13 @@
 package school.trungi.tpac.levelBuilder;
 
+import school.trungi.tpac.common.BoxTypes;
+import school.trungi.tpac.common.BoxView;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import common.BoxTypes;
-import common.BoxView;
 
 public class EditorButton extends BoxView {
 	
@@ -37,7 +37,7 @@ public class EditorButton extends BoxView {
 		this.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View arg0) {
-				position++;
+				setPosition(1);
 				invalidate();
 			}
 		});
@@ -50,7 +50,7 @@ public class EditorButton extends BoxView {
 		
 		paint.setColor(0xFFFFFFFF);
 		
-		c.drawText(Character.toString(BoxTypes.list[position]), width/2, height/2, paint);
+		//c.drawText(Character.toString(BoxTypes.list[position]), width/2, height/2, paint);
 		c.drawBitmap(boxes.bitmaps[position], 0, 0, paint);
 	}
 	

@@ -1,4 +1,4 @@
-package common;
+package school.trungi.tpac.common;
 
 public class Box {
 	int item;
@@ -13,11 +13,7 @@ public class Box {
 	
 	@Override
 	public String toString() {
-		if (item == BoxTypes.INVISIBLE_BOX) {
-			return ".";
-		} else {
-			return new String(Character.toString(BoxTypes.list[item]));
-		}
+		return Integer.toString(item);
 	}
 
 	public boolean isEmpty() {

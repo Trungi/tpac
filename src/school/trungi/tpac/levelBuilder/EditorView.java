@@ -1,15 +1,16 @@
 package school.trungi.tpac.levelBuilder;
 
 import school.trungi.tpac.R;
+import school.trungi.tpac.common.Box;
+import school.trungi.tpac.common.BoxTypes;
+import school.trungi.tpac.common.BoxView;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
-import common.Box;
-import common.BoxTypes;
-import common.BoxView;
 
 public class EditorView extends BoxView {
 	
@@ -46,8 +47,8 @@ public class EditorView extends BoxView {
 	private int lastI = -1, lastJ = -1;
 	
 	public void setBox(int clickX, int clickY) {
-		int i = clickX / (width/m);
-		int j = clickY / (height/n);
+		int i = (clickX - marginLeft) / size;
+		int j = (clickY - marginTop) / size;
 			 
 		try {
 			if (BoxTypes.list[button.getCurrent()] > 'Z') {
@@ -76,6 +77,18 @@ public class EditorView extends BoxView {
 			if (i != lastI && j != lastJ)
 				Toast.makeText(this.getContext(), R.string.not_empty, Toast.LENGTH_SHORT).show();
 		}
+	}
+	
+	@Override
+	public void onDraw(Canvas canvas) {
+		
+		for (int i=0; i<=m; i++) {
+			canvas.drawLine(getX(i), marginTop, getX(i), n*size+marginTop, paint);
+		}
+		for (int j=0; j<=n; j++) {
+			canvas.drawLine(marginLeft, getY(j), m*size+marginLeft, getY(j), paint);
+		}
+		super.onDraw(canvas);
 	}
 	
 	public void setButton(EditorButton _button) {

@@ -1,28 +1,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#000000" >
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="35dp"
-        android:text="@string/hello_text"
-        tools:context=".MainActivity"/>
+    android:layout_height="match_parent" >
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView1"
         android:layout_centerVertical="true"
-        android:text="@string/new_game"
-        android:onClick="notImplementedYet"  />
+        android:onClick="pickMap"
+        android:layout_marginLeft="20dp"
+        android:text="@string/new_game" />
 
     <Button
         android:id="@+id/button4"
@@ -31,8 +19,8 @@
         android:layout_alignLeft="@+id/button1"
         android:layout_below="@+id/button1"
         android:layout_marginTop="14dp"
-        android:text="@string/continue_game"
-        android:onClick="notImplementedYet" />
+        android:onClick="notImplementedYet"
+        android:text="@string/continue_game" />
 
     <Button
         android:id="@+id/button2"
@@ -41,8 +29,8 @@
         android:layout_alignLeft="@+id/button4"
         android:layout_below="@+id/button4"
         android:layout_marginTop="15dp"
-        android:text="@string/new_level"
-        android:onClick="createNewLevel" />
+        android:onClick="createNewLevel"
+        android:text="@string/new_level" />
 
     <Button
         android:id="@+id/button3"
@@ -51,7 +39,18 @@
         android:layout_alignLeft="@+id/button2"
         android:layout_below="@+id/button2"
         android:layout_marginTop="16dp"
-        android:text="@string/highscore"
-        android:onClick="notImplementedYet"  />
+        android:onClick="notImplementedYet"
+        android:text="@string/highscore" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/button2"
+        android:contentDescription="@string/logo_description"
+        android:layout_marginTop="31dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/logo" />
 
 </RelativeLayout>

@@ -12,7 +12,7 @@
     <string name="not_implemented_yet">Not implemented yet!</string>
     <string name="level_editor">Level editor</string>
     <string name="save_map">Save!</string>
-    <string name="map_saved">Your map was successfuly saved!</string>
+    <string name="map_saved">Your map was successfully saved!</string>
     <string name="inc_position">inc</string>
     <string name="dec_position">dec</string>
     <string name="level_name">Level name:</string>
@@ -30,5 +30,9 @@
     <string name="file_exists">Map with this name already exists</string>
     <string name="can_not_save">This map can not be saved</string>
     <string name="not_empty">Fields required to change are not empty</string>
-    
+    <string name="title_activity_map_picker">Please select a map</string>
+    <string name="title_activity_game">TPac</string>
+	<string name="not_found">Map was not found</string>
+	<string name="not_readable">This map is not readable</string>
+	<string name="logo_description">Logo</string>
 </resources>

@@ -27,6 +27,14 @@
             android:name="school.trungi.tpac.EditorWelcomeActivity"
             android:label="@string/title_activity_editor_welcome" >
         </activity>
+        <activity
+            android:name="school.trungi.tpac.MapPickerActivity"
+            android:label="@string/title_activity_map_picker" >
+        </activity>
+        <activity
+            android:name="school.trungi.tpac.GameActivity"
+            android:label="@string/title_activity_game" >
+        </activity>
     </application>
 
 </manifest>

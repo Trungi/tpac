@@ -1,4 +1,6 @@
-package common;
+package school.trungi.tpac.common;
+
+import java.util.Scanner;
 
 import android.graphics.Bitmap;
 
@@ -19,6 +21,21 @@ public class Map {
 		}
 	}
 	
+	public Map(String mapStr) {
+		Scanner in = new Scanner(mapStr);
+		
+		m = in.nextInt();
+		n = in.nextInt();
+		
+		map = new Box[m][n];
+		
+		for (int i=0; i<m; i++) {
+			for (int j=0; j<n; j++) {
+				map[i][j] = new Box(in.nextInt());
+			}
+		}
+	}
+
 	public void setBoxes(BoxTypes _boxes) {
 		boxes = _boxes;
 	}
@@ -46,11 +63,11 @@ public class Map {
 		StringBuilder str = new StringBuilder();
 		
 		str.append(Integer.toString(m)).append(" ");
-		str.append(Integer.toString(n)).append("\n");
+		str.append(Integer.toString(n)).append(" ");
 		
 		for (int i=0; i<m; i++) {
 			for (int j=0; j<n; j++) {
-				str.append(map[i][j].toString());
+				str.append(map[i][j].toString()).append(" ");
 			}
 		}
 		

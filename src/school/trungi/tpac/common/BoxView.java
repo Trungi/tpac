@@ -1,4 +1,4 @@
-package common;
+package school.trungi.tpac.common;
 
 import school.trungi.tpac.R;
 import android.content.Context;
@@ -13,7 +13,8 @@ import android.view.View;
 public class BoxView extends View {
 	
 	protected int m = 1, n = 1;
-	protected int width, height, wsize, hsize;
+	protected int marginTop = 0, marginLeft = 0;
+	protected int width, height, size;
 	protected Map map = null;
 	protected Paint paint = new Paint();
 	public String TAG = "BoxView";
@@ -35,10 +36,14 @@ public class BoxView extends View {
 		this.width = w;
 		this.height = h;
 		
-		this.wsize = w / m;
-		this.hsize = h / n;
+		int wsize = w / m;
+		int hsize = h / n;
 		
-		map.setBoxes(new BoxTypes(getResources(), wsize, 2*wsize));
+		size = (wsize < hsize) ? wsize : hsize;
+		
+		marginTop = (h - n*size) /2;
+		marginLeft = (w - m*size) / 2;
+		map.setBoxes(new BoxTypes(getResources(), size, 2*size));
 	}
 
 	@Override
@@ -48,35 +53,23 @@ public class BoxView extends View {
 		if (map == null) return;
 		paint.setColor(0xff101010);
 		
-		for (int i=wsize; i<=width; i+= wsize) {
-			canvas.drawLine(i, 0, i, height, paint);
-		}
-		for (int j=hsize; j<=height; j+= hsize) {
-			canvas.drawLine(0, j, width, j, paint);
-		}
-		
 		for (int i=0; i<m; i++) {
 			for (int j=0; j<n; j++) {
-				canvas.drawText(map.get(i, j).toString(), (i)*(width/m), (j+1)*(height/n), paint);
+				//canvas.drawText(map.get(i, j).toString(), getX(i), getY(j+1), paint);
+				
 				if (map.getBitmap(i, j) != null) {
-					canvas.drawBitmap(map.getBitmap(i, j), i*(width/m), j*(height/n), paint);
+					canvas.drawBitmap(map.getBitmap(i, j), getX(i), getY(j), paint);
 				}
 			}
 		} 
 	}
 	
-	public Bitmap get(Box a) {
-        Resources r = this.getContext().getResources();
-
-        Bitmap bitmap = Bitmap.createBitmap(wsize, hsize, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        
-        Drawable tile = r.getDrawable(R.drawable.e);
-		
-        tile.setBounds(0, 0, wsize, hsize);
-        tile.draw(canvas);
-        
-        return bitmap;
+	protected int getX(int i) {
+		return i*size + marginLeft;
+	}
+	
+	protected int getY(int j) {
+		return j*size + marginTop; 
 	}
 	
 	public void setMapSize(int x, int y) {

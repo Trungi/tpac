@@ -1,4 +1,4 @@
-package common;
+package school.trungi.tpac.common;
 
 import school.trungi.tpac.R;
 import android.content.res.Resources;
@@ -7,8 +7,9 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
 public class BoxTypes {
-	public static final char list[] = {'a', 'b', 'C', 'E' };
-	public static final int Rlist[] = {R.drawable.a, R.drawable.b, R.drawable.c,  R.drawable.e};
+	public static final char list[] = {'E', 'b', 'E', 'F', 'P', 'G' };
+	public static final int Rlist[] = {R.drawable.empty, R.drawable.block, 
+		R.drawable.berry, R.drawable.food, R.drawable.pacman_spawn, R.drawable.ghost_spawn, };
 	public Bitmap bitmaps[];
 	
 	public static final int EMPTY_BOX = 0;

@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import school.trungi.tpac.common.Map;
 import school.trungi.tpac.levelBuilder.EditorButton;
 import school.trungi.tpac.levelBuilder.EditorView;
 import android.app.Activity;
@@ -13,7 +14,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import common.Map;
 
 public class CreateLevelActivity extends Activity {
 
