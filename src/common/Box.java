@@ -1,19 +1,26 @@
 package common;
 
 public class Box {
-	boolean right, top, left, bottom;
-	char item;
+	int item;
 	
 	public Box() {
-		item = 'e';
+		item = BoxTypes.EMPTY_BOX;
 	}
 	
-	public Box(char _item) {
+	public Box(int _item) {
 		item = _item;
 	}
 	
 	@Override
 	public String toString() {
-		return new String(Character.toString(item));
+		if (item == BoxTypes.INVISIBLE_BOX) {
+			return ".";
+		} else {
+			return new String(Character.toString(BoxTypes.list[item]));
+		}
+	}
+
+	public boolean isEmpty() {
+		return item == BoxTypes.EMPTY_BOX;
 	}
 }

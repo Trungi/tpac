@@ -24,11 +24,20 @@ public class MainActivity extends Activity {
     }
     
     public void createNewLevel(View v) {
-    	Intent intent = new Intent(this, EditorWelcomeActivity.class);
+    	//Intent intent = new Intent(this, EditorWelcomeActivity.class);
+    	
+    	// this is just a debug hack
+    	Intent intent = new Intent(this, CreateLevelActivity.class);
+		intent.putExtra("level_name", "new name");
+		intent.putExtra("sizeX", 25);
+		intent.putExtra("sizeY", 25);
+    	// end of debug
+		
     	startActivity(intent);
     }
     
     public void notImplementedYet(View v) {
     	Toast.makeText(this, R.string.not_implemented_yet, Toast.LENGTH_SHORT).show();
     }
+    
 }

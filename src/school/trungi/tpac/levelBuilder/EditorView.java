@@ -1,25 +1,21 @@
 package school.trungi.tpac.levelBuilder;
 
+import school.trungi.tpac.R;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import common.Box;
+import common.BoxTypes;
 import common.BoxView;
-import common.Map;
 
 public class EditorView extends BoxView {
 	
-	protected Paint paint = new Paint();
 	public String TAG = "EditorView";
-	protected Map map = new Map(100, 100);
-	public int i = 0;
-	protected int width, height, wsize, hsize;
-	protected int m = 1, n = 1;
 	protected EditorButton button;
+	private int INVISIBLE_BOX = BoxTypes.INVISIBLE_BOX;
 
 	public EditorView(Context context) {
 		super(context);
@@ -37,8 +33,6 @@ public class EditorView extends BoxView {
 	}
 
 	protected void editorInit(int m, int n) {
-		map = new Map(m, n);
-		
 		this.setOnTouchListener(new View.OnTouchListener() {
 			
 			public boolean onTouch(View v, MotionEvent event) {
@@ -49,55 +43,44 @@ public class EditorView extends BoxView {
 		});
 	}
 	
+	private int lastI = -1, lastJ = -1;
+	
 	public void setBox(int clickX, int clickY) {
-		 if (button != null) {
-			 int i = clickX / (width/m);
-			 int j = clickY / (height/n) + 1;
+		int i = clickX / (width/m);
+		int j = clickY / (height/n);
 			 
-			 if (i < m && j < n) {
-			 	map.set(i, j, new Box(button.getCurrent()));
-			 }
-		 }
-	}
-	
-	@Override
-	public void onDraw(Canvas canvas) {
-		super.onDraw(canvas);
-		paint.setColor(0xff101010);
-		
-		for (int i=wsize; i<=width; i+= wsize) {
-			canvas.drawLine(i, 0, i, height, paint);
-		}
-		for (int j=hsize; j<=height; j+= hsize) {
-			canvas.drawLine(0, j, width, j, paint);
-		}
-		
-		for (int i=0; i<m; i++) {
-			for (int j=0; j<n; j++) {
-				canvas.drawText(map.get(i, j).toString(), i*(width/m), j*(height/n), paint);
+		try {
+			if (BoxTypes.list[button.getCurrent()] > 'Z') {
+				if (i < m && j < n) {
+					if (!map.get(i, j).isEmpty()) throw new CanNotPutException();
+					
+					map.set(i, j, new Box(button.getCurrent()));
+				}	
+			} else {
+				if (i+1 < m && j+1 < n) {
+					if (!map.get(i, j).isEmpty()) throw new CanNotPutException();
+					if (!map.get(i+1, j).isEmpty()) throw new CanNotPutException();
+					if (!map.get(i, j+1).isEmpty()) throw new CanNotPutException();
+					if (!map.get(i+1, j+1).isEmpty()) throw new CanNotPutException();
+					
+					map.set(i, j, new Box(button.getCurrent()));
+					map.set(i+1, j, new Box(INVISIBLE_BOX));
+					map.set(i, j+1, new Box(INVISIBLE_BOX));
+					map.set(i+1, j+1, new Box(INVISIBLE_BOX));				 
+				}
 			}
-		} 
-	}
-	
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		this.width = w;
-		this.height = h;
-		
-		this.wsize = w / m;
-		this.hsize = h / n;
+			
+			lastI = i;
+			lastJ = j;
+		} catch (CanNotPutException e) {
+			if (i != lastI && j != lastJ)
+				Toast.makeText(this.getContext(), R.string.not_empty, Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	public void setButton(EditorButton _button) {
 		button = _button;
 	}
 	
-	public Map getMap() {
-		return this.map;
-	}
-
-	public void setMapSize(int x, int y) {
-		this.m = x;
-		this.n = y;
-		editorInit(x, y);
-	}
+    class CanNotPutException extends Exception {};
 }

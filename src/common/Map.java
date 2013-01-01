@@ -1,9 +1,12 @@
 package common;
 
+import android.graphics.Bitmap;
+
 public class Map {
 	
 	Box[][] map;
 	int m, n;
+	private BoxTypes boxes = null;
 	
 	public Map(int m, int n) {
 		map = new Box[m][n];
@@ -16,8 +19,22 @@ public class Map {
 		}
 	}
 	
+	public void setBoxes(BoxTypes _boxes) {
+		boxes = _boxes;
+	}
+	
 	public Box get(int i, int j) {
 		return map[i][j];
+	}
+
+	public Bitmap getBitmap(int i, int j) {
+		int index = map[i][j].item;
+		
+		if (index != BoxTypes.INVISIBLE_BOX) {
+			return boxes.bitmaps[index];
+		} else {
+			return null;
+		}
 	}
 	
 	public void set(int i, int j, Box b) {

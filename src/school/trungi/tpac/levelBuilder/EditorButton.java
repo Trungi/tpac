@@ -6,18 +6,17 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import common.BoxRenderer;
 import common.BoxTypes;
 import common.BoxView;
 
 public class EditorButton extends BoxView {
 	
-	public final char[] attrs = BoxTypes.list;
-	private BoxRenderer renderer = new BoxRenderer();
-	private int position = 0;
-	private String TAG = "EditorButton";
-	private Paint paint = new Paint();
+	protected BoxTypes boxes;
+	protected int position = 0;
+	protected String TAG = "EditorButton";
+	protected Paint paint = new Paint();
 	protected int width, height;
+	
 
 	public EditorButton(Context context) {
 		super(context);
@@ -47,34 +46,34 @@ public class EditorButton extends BoxView {
 	@Override
 	public void onDraw(Canvas c) {
 		super.onDraw(c);		
-		if (position >= attrs.length) {
-			position = 0;
-		}
-		if (position < 0 ) {
-			position = attrs.length - position;
-		}
+		if (boxes == null) return;
 		
-		c.drawText(Character.toString(getCurrent()), width/2, height/2, paint);
+		paint.setColor(0xFFFFFFFF);
+		
+		c.drawText(Character.toString(BoxTypes.list[position]), width/2, height/2, paint);
+		c.drawBitmap(boxes.bitmaps[position], 0, 0, paint);
 	}
 	
 	public void setPosition(int diff) {
 		position += diff;		
 		
-		if (position >= attrs.length) {
+		if (position >= BoxTypes.list.length) {
 			position = 0;
 		}
 		if (position < 0 ) {
-			position = attrs.length + position;
+			position = BoxTypes.list.length + position;
 		}
 	}
 	
-	public char getCurrent() {
-		return attrs[position];		
+	public int getCurrent() {
+		return position;		
 	}
 	
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		width = w;
 		height = h;
+		
+		boxes = new BoxTypes(getResources(), w, w);
 	}
 }

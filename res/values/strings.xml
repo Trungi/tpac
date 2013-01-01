@@ -29,5 +29,6 @@
     <string name="map_too_big">This map is too large</string>
     <string name="file_exists">Map with this name already exists</string>
     <string name="can_not_save">This map can not be saved</string>
+    <string name="not_empty">Fields required to change are not empty</string>
     
 </resources>
