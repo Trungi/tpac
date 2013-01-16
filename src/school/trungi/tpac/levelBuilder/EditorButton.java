@@ -4,6 +4,7 @@ import school.trungi.tpac.common.BoxTypes;
 import school.trungi.tpac.common.BoxView;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
@@ -48,10 +49,21 @@ public class EditorButton extends BoxView {
 		super.onDraw(c);		
 		if (boxes == null) return;
 		
-		paint.setColor(0xFFFFFFFF);
+		paint.setColor(Color.BLACK);
 		
-		//c.drawText(Character.toString(BoxTypes.list[position]), width/2, height/2, paint);
+
+		c.drawLine(0, 0, 0, height, paint);
+		c.drawLine(0, 0, width, 0, paint);
+		c.drawLine(width-1, 0, width-1, height, paint);
+		c.drawLine(0, height-1, width, height-1, paint);
+		
+		if (BoxTypes.list[getCurrent()] <= 'Z' || getCurrent() == BoxTypes.EMPTY_BOX) {
+			c.drawLine(0, height/2, width, height/2, paint);
+			c.drawLine(width/2, 0, width/2, height, paint);
+		}
+
 		c.drawBitmap(boxes.bitmaps[position], 0, 0, paint);
+		//c.drawText(Character.toString(BoxTypes.list[position]), width/2, height/2, paint);
 	}
 	
 	public void setPosition(int diff) {

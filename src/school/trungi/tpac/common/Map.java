@@ -1,5 +1,6 @@
 package school.trungi.tpac.common;
 
+import java.io.FileInputStream;
 import java.util.Scanner;
 
 import android.graphics.Bitmap;
@@ -21,20 +22,21 @@ public class Map {
 		}
 	}
 	
-	public Map(String mapStr) {
-		Scanner in = new Scanner(mapStr);
+	public Map(FileInputStream stream) {
+			Scanner in = new Scanner(stream);
+			
+			m = Integer.parseInt(in.next());
+			n = Integer.parseInt(in.next());
 		
-		m = in.nextInt();
-		n = in.nextInt();
+			map = new Box[m][n];
 		
-		map = new Box[m][n];
-		
-		for (int i=0; i<m; i++) {
-			for (int j=0; j<n; j++) {
-				map[i][j] = new Box(in.nextInt());
+			for (int i=0; i<m; i++) {
+				for (int j=0; j<n; j++) {
+					map[i][j] = new Box(Integer.parseInt(in.next()));
+				}
 			}
-		}
 	}
+	
 
 	public void setBoxes(BoxTypes _boxes) {
 		boxes = _boxes;
@@ -42,6 +44,14 @@ public class Map {
 	
 	public Box get(int i, int j) {
 		return map[i][j];
+	}
+	
+	public int getM() {
+		return this.m;
+	}
+	
+	public int getN() {
+		return this.n;
 	}
 
 	public Bitmap getBitmap(int i, int j) {
@@ -62,13 +72,14 @@ public class Map {
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 		
-		str.append(Integer.toString(m)).append(" ");
-		str.append(Integer.toString(n)).append(" ");
+		str.append(Integer.toString(m)).append("\n");
+		str.append(Integer.toString(n)).append("\n");
 		
 		for (int i=0; i<m; i++) {
 			for (int j=0; j<n; j++) {
-				str.append(map[i][j].toString()).append(" ");
+				str.append(map[i][j].toString()).append("\n");
 			}
+			str.append('\n');
 		}
 		
 		return str.toString();

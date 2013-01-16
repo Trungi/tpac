@@ -3,6 +3,8 @@ package school.trungi.tpac;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import school.trungi.tpac.game.GameView;
 import android.app.Activity;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 public class GameActivity extends Activity {
 	
 	private GameView game;
+	private Timer autoUpdate;
+	private int ms = 200;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,27 +30,46 @@ public class GameActivity extends Activity {
 		
 		game = (GameView) findViewById(R.id.game);
 		String mapName = getIntent().getStringExtra("map_name");
-		
+
+		FileInputStream in = null;
 		try {
-			FileInputStream input = openFileInput(mapName);
-		
-			byte buffer[] = new byte[1024];
-			StringBuffer content = new StringBuffer();
-			int length;
-		
-			length = input.read(buffer);
-			while (length != -1) {
-				content.append(new String(buffer));
-				length = input.read(buffer);
-			}
-		
-			game.loadMap(content.toString());
+			in = openFileInput(mapName);
+			game.loadMap(in);
+			
+			in.close();
 		} catch (FileNotFoundException e) {
 			Toast.makeText(this, R.string.not_found, Toast.LENGTH_SHORT).show();
+			finish();
 		} catch (IOException e) {
-			Toast.makeText(this, R.string.not_readable, Toast.LENGTH_SHORT).show();			
+			finish();
 		}
 	}
+	
+	@Override
+	public void onResume() {
+		 super.onResume();
+		 autoUpdate = new Timer();
+		 autoUpdate.schedule(new TimerTask() {
+			 	@Override
+			 	public void run() {
+			 		runOnUiThread(new Runnable() {
+			 			public void run() {
+			 				redraw();
+			 			}
+			 		});
+			 	}
+		 }, 0, ms); 
+	 }
+	 
+	@Override
+	public void onPause() {
+		autoUpdate.cancel();
+		super.onPause();
+	}
+
+	 public void redraw() {
+		 game.redraw();
+	 }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,5 +77,5 @@ public class GameActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_game, menu);
 		return true;
 	}
-
+	
 }

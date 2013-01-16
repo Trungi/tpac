@@ -2,7 +2,6 @@ package school.trungi.tpac;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import school.trungi.tpac.common.Map;

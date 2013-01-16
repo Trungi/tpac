@@ -19,4 +19,8 @@ public class Box {
 	public boolean isEmpty() {
 		return item == BoxTypes.EMPTY_BOX;
 	}
+	
+	public boolean isBig() {
+		return BoxTypes.list[item] <= 'Z';
+	}
 }

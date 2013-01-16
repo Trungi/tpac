@@ -1,10 +1,8 @@
 package school.trungi.tpac;
 
-import java.util.ArrayList;
 
 import school.trungi.tpac.game.MapAdapter;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MapPickerActivity extends Activity {
 
@@ -29,8 +26,6 @@ public class MapPickerActivity extends Activity {
 		ArrayAdapter<String> adapter = new MapAdapter(this, list);
 		
 		MapList.setAdapter(adapter);
-		
-		final Context c = this;
 		
 		MapList.setOnItemClickListener(new OnItemClickListener() {
 

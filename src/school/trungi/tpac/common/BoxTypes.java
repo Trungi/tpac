@@ -7,14 +7,13 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
 public class BoxTypes {
-	public static final char list[] = {'E', 'b', 'E', 'F', 'P', 'G' };
+	public static final char list[] = {'E', 'b', 'B', 'F', 'P', 'G' };
 	public static final int Rlist[] = {R.drawable.empty, R.drawable.block, 
 		R.drawable.berry, R.drawable.food, R.drawable.pacman_spawn, R.drawable.ghost_spawn, };
 	public Bitmap bitmaps[];
 	
 	public static final int EMPTY_BOX = 0;
 	public static final int INVISIBLE_BOX = -1;
-
 	
 	public BoxTypes(Resources r,int size, int bigSize) {
         bitmaps = new Bitmap[Rlist.length];
