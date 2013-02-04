@@ -10,6 +10,9 @@ package school.trungi.tpac;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int arrows_background=0x7f050000;
+    }
     public static final class drawable {
         public static final int berry=0x7f020000;
         public static final int block=0x7f020001;
@@ -27,52 +30,61 @@ public final class R {
         public static final int pacman_spawn=0x7f02000d;
     }
     public static final class id {
-        public static final int arrowContainer=0x7f070014;
-        public static final int button1=0x7f070002;
-        public static final int button2=0x7f070004;
-        public static final int button3=0x7f070005;
-        public static final int button4=0x7f070003;
-        public static final int editor=0x7f070008;
-        public static final int editor_field=0x7f07000a;
-        public static final int game=0x7f070000;
-        public static final int imageDown=0x7f070018;
-        public static final int imageLeft=0x7f070016;
-        public static final int imageRight=0x7f070017;
-        public static final int imageUp=0x7f070015;
-        public static final int imageView1=0x7f070006;
-        public static final int inc_button=0x7f070009;
-        public static final int letterX=0x7f070010;
-        public static final int level_confirm=0x7f070013;
-        public static final int level_name=0x7f07000d;
-        public static final int level_name_caption=0x7f07000c;
-        public static final int level_size_caption=0x7f07000e;
-        public static final int mapRow=0x7f070019;
-        public static final int map_list=0x7f070007;
-        public static final int menu_settings=0x7f07001a;
-        public static final int save_map_button=0x7f07000b;
-        public static final int show_arrows=0x7f070012;
-        public static final int sizeX=0x7f07000f;
-        public static final int sizeY=0x7f070011;
-        public static final int stats=0x7f070001;
+        public static final int arrowContainer=0x7f080013;
+        public static final int button1=0x7f080000;
+        public static final int button2=0x7f080003;
+        public static final int button3=0x7f080004;
+        public static final int editor=0x7f080007;
+        public static final int editor_field=0x7f080009;
+        public static final int finish_stats=0x7f080019;
+        public static final int game=0x7f080001;
+        public static final int imageDown=0x7f080017;
+        public static final int imageLeft=0x7f080015;
+        public static final int imageRight=0x7f080016;
+        public static final int imageUp=0x7f080014;
+        public static final int imageView1=0x7f080005;
+        public static final int inc_button=0x7f080008;
+        public static final int letterX=0x7f08000f;
+        public static final int level_confirm=0x7f080012;
+        public static final int level_name=0x7f08000c;
+        public static final int level_name_caption=0x7f08000b;
+        public static final int level_size_caption=0x7f08000d;
+        public static final int mapRow=0x7f08001a;
+        public static final int map_list=0x7f080006;
+        public static final int menu_settings=0x7f08001b;
+        public static final int save_map_button=0x7f08000a;
+        public static final int show_arrows=0x7f080011;
+        public static final int sizeX=0x7f08000e;
+        public static final int sizeY=0x7f080010;
+        public static final int stats=0x7f080002;
+        public static final int textView1=0x7f080018;
     }
     public static final class layout {
-        public static final int activity_game=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int activity_map_picker=0x7f030002;
-        public static final int editor_no_buttons=0x7f030003;
-        public static final int editor_welcome=0x7f030004;
-        public static final int editor_with_buttons=0x7f030005;
-        public static final int map_list_row=0x7f030006;
+        public static final int activity_about=0x7f030000;
+        public static final int activity_game=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int activity_map_picker=0x7f030003;
+        public static final int editor_no_buttons=0x7f030004;
+        public static final int editor_welcome=0x7f030005;
+        public static final int editor_with_buttons=0x7f030006;
+        public static final int game_finished=0x7f030007;
+        public static final int map_list_row=0x7f030008;
     }
     public static final class menu {
-        public static final int activity_game=0x7f060000;
-        public static final int activity_main=0x7f060001;
-        public static final int activity_map_picker=0x7f060002;
-        public static final int sadfasdfasf=0x7f060003;
+        public static final int activity_about=0x7f070000;
+        public static final int activity_game=0x7f070001;
+        public static final int activity_main=0x7f070002;
+        public static final int activity_map_picker=0x7f070003;
+        public static final int activity_stats=0x7f070004;
+        public static final int sadfasdfasf=0x7f070005;
     }
     public static final class string {
+        public static final int about=0x7f040006;
+        public static final int about_full=0x7f040024;
         public static final int app_name=0x7f040000;
+        public static final int back=0x7f040023;
         public static final int can_not_save=0x7f04001b;
+        public static final int congratulations=0x7f040026;
         public static final int continue_game=0x7f040007;
         public static final int continuee=0x7f040013;
         public static final int dec_position=0x7f04000d;
@@ -80,7 +92,6 @@ public final class R {
         public static final int file_exists=0x7f04001a;
         public static final int hello_text=0x7f040001;
         public static final int hello_world=0x7f040014;
-        public static final int highscore=0x7f040006;
         public static final int inc_position=0x7f04000c;
         public static final int level_editor=0x7f040009;
         public static final int level_name=0x7f04000e;
@@ -98,16 +109,19 @@ public final class R {
         public static final int not_found=0x7f04001f;
         public static final int not_implemented_yet=0x7f040008;
         public static final int not_readable=0x7f040020;
+        public static final int push=0x7f040025;
         public static final int s20=0x7f040010;
         public static final int save_map=0x7f04000a;
         public static final int show_arrows=0x7f040022;
+        public static final int title_activity_about=0x7f040028;
         public static final int title_activity_editor_welcome=0x7f040015;
         public static final int title_activity_game=0x7f04001e;
         public static final int title_activity_main=0x7f040003;
         public static final int title_activity_map_picker=0x7f04001d;
+        public static final int title_activity_stats=0x7f040027;
         public static final int x=0x7f040011;
     }
     public static final class style {
-        public static final int AppTheme=0x7f050000;
+        public static final int AppTheme=0x7f060000;
     }
 }

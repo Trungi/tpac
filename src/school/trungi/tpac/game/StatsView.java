@@ -12,10 +12,13 @@ public class StatsView extends View {
 	protected Map map;
 	protected int lives = 3;
 	protected int food = 0;
+	protected long score = 0;
+	protected long start;
 	protected Paint paint = new Paint();
 	
 	public StatsView(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		start = System.currentTimeMillis();
 	}
 
 	public void setMap(Map map) {
@@ -32,6 +35,8 @@ public class StatsView extends View {
 	
 	public void eat() {
 		food--;
+		score += ((120000 - (System.currentTimeMillis() - start)) + 30000)/10;
+				
 		invalidate();
 	}
 	
@@ -48,11 +53,16 @@ public class StatsView extends View {
 		return food;
 	}
 	
+	public long getScore() {
+		return score;
+	}
+	
 	public void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		paint.setColor(0xff101010);
 		
-		canvas.drawText("Lives " + lives + ", food: " + food, 20, 20, paint);
+		canvas.drawText("Lives " + lives + ", food: " + food + " score: " +
+				score, 20, 20, paint);
 		
 	}
 	

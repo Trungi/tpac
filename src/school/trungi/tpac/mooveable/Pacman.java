@@ -9,14 +9,10 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
 public class Pacman extends Mooveable {
-
-	int startX, startY;
 	
 	public Pacman(int x, int y, int m, int n, int size, Resources r, Map map) {
 		super(x, y, m, n, size, r, map);
-		
-		startX = x;
-		startY = y;
+
 		this.setBitMap(R.drawable.logo);
 	}
 
@@ -47,9 +43,5 @@ public class Pacman extends Mooveable {
 		}
 	}
 
-	public void reset() {
-		posX = startX;
-		posY = startY;
-	}
 	
 }

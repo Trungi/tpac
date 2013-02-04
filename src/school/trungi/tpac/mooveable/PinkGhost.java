@@ -24,16 +24,17 @@ public class PinkGhost extends Ghost {
 	@Override
 	public void computeDirection() {
 		int x = posX, y = posY;
-		int dir = generator.nextInt() % 4;
+		int dir = Math.abs(generator.nextInt()) % 4;
 		
 		countPos();
-		
-		while (x == posX && y == posY) {
+		int i = 0;
+		while (x == posX && y == posY && i<5) {
 			posX = x;
 			posY = y;
 			direction = dir;
 			countPos();
 			dir++;
+			i++;
 			if (dir > 3) dir = 0;
 		}
 		posX = x;

@@ -14,7 +14,7 @@ public class GreenGhost extends Ghost {
 			Resources resources, Map map, Pacman pacman) {
 		super(x, y, m, n, size, resources, map);
 		
-		this.setBitMap(R.drawable.pacman_spawn);
+		this.setBitMap(R.drawable.berry);
 		this.pacman = pacman;
 		generator = new Random(System.nanoTime());
 	}
@@ -24,7 +24,7 @@ public class GreenGhost extends Ghost {
 	@Override
 	public void computeDirection() {
 		if (calls < 15) {
-			direction = generator.nextInt() % 4;
+			direction = Math.abs(generator.nextInt()) % 4;
 			calls++;
 		}
 		

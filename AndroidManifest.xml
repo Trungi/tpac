@@ -35,6 +35,14 @@
             android:name="school.trungi.tpac.GameActivity"
             android:label="@string/title_activity_game" >
         </activity>
+        <activity
+            android:name="school.trungi.tpac.StatsActivity"
+            android:label="@string/title_activity_stats" >
+        </activity>
+        <activity
+            android:name="school.trungi.tpac.AboutActivity"
+            android:label="@string/title_activity_about" >
+        </activity>
     </application>
 
 </manifest>

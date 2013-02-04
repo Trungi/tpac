@@ -26,9 +26,8 @@ public class BoxView extends View {
 	public BoxView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
-	
 	@Override
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+	protected void onSizeChanged(int w, int h, int oldw, int oldh) {		
 		this.width = w;
 		this.height = h;
 		

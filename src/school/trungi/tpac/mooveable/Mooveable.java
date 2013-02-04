@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 public abstract class Mooveable {
 	protected int posX, posY;
 	protected int sizeX, sizeY;
+	protected int startX, startY;
 	protected int size;
 	protected int direction;
 	protected Map map;
@@ -25,6 +26,8 @@ public abstract class Mooveable {
 	public Mooveable(int x, int y, int m, int n, int size, Resources resources, Map map) {
 		posX = x;
 		posY = y;
+		startX = x;
+		startY = y;
 		sizeX = m;
 		sizeY = n;
 		this.size = size;
@@ -71,6 +74,12 @@ public abstract class Mooveable {
 			posX = oldX;
 			posY = oldY;
 		}
+	}
+	
+
+	public void reset() {
+		posX = startX;
+		posY = startY;
 	}
 
 	public int getX() {

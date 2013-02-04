@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import school.trungi.tpac.game.FinishView;
 import school.trungi.tpac.game.GameView;
 import school.trungi.tpac.game.StatsView;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Toast;
@@ -40,7 +42,7 @@ public class GameActivity extends Activity {
 			in.close();
 			
 
-			game.init((StatsView) findViewById(R.id.stats));
+			game.init((StatsView) findViewById(R.id.stats), this);
 		} catch (FileNotFoundException e) {
 			Toast.makeText(this, R.string.not_found, Toast.LENGTH_SHORT).show();
 			finish();
@@ -80,6 +82,16 @@ public class GameActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_game, menu);
 		return true;
+	}
+
+	public void finishGame(long score, int lives) {
+		Intent intent = new Intent(this, StatsActivity.class);
+		
+		intent.putExtra("score", score);
+		intent.putExtra("lives", lives);
+		
+		startActivity(intent);
+		finish();
 	}
 	
 }

@@ -3,6 +3,7 @@ package school.trungi.tpac.game;
 import java.io.FileInputStream;
 import java.util.Timer;
 
+import school.trungi.tpac.GameActivity;
 import school.trungi.tpac.common.Box;
 import school.trungi.tpac.common.BoxView;
 import school.trungi.tpac.common.Map;
@@ -21,6 +22,7 @@ public class GameView extends BoxView {
 	
 	protected int pacX, pacY;
 	protected boolean running = true;
+	protected GameActivity ga;
 	protected Timer timer;
 	protected Pacman pacman;
 	protected Ghost[] ghosts = new Ghost[4];
@@ -76,9 +78,14 @@ public class GameView extends BoxView {
 					pacman = new Pacman(i, j, m, n, size, getResources(), map);
 					map.set(i, j, new Box());
 				}
+			}
+		}
+
+		for (int i=0; i<map.getM(); i++) {
+			for (int j=0; j<map.getN(); j++){
 				if (map.get(i, j).isGhost()) {
 					map.set(i, j, new Box());
-					
+				
 					ghosts[0] = new Ghost(i, j, m, n, size, getResources(), map);
 					ghosts[1] = new PinkGhost(i, j, m, n, size, getResources(), map, pacman);
 					ghosts[2] = new GreenGhost(i, j, m, n, size, getResources(), map, pacman);
@@ -91,7 +98,10 @@ public class GameView extends BoxView {
 	private boolean finished = false;
 	public void redraw() {
 		try {
-			if (finished) return;
+			if (finished) {
+				ga.finishGame(stats.getScore(), stats.getLives());
+				return;
+			}
 			
 			pacman.move();
 			for (int i=0; i<4; i++){
@@ -120,7 +130,10 @@ public class GameView extends BoxView {
 					stats.kill();
 					if (stats.getLives() != 0) {
 						pacman.reset();
-					}
+						for (int q=0; q<4; q++) {
+							ghosts[q].reset();
+						}
+					} 
 				}
 			}
 				
@@ -136,8 +149,9 @@ public class GameView extends BoxView {
 		return running;
 	}
 
-	public void init(StatsView s) {
+	public void init(StatsView s, GameActivity ga) {
 		stats = s;
+		this.ga = ga;
 		stats.setMap(map);
 	}
 }
