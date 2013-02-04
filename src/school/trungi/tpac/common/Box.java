@@ -23,4 +23,12 @@ public class Box {
 	public boolean isBig() {
 		return BoxTypes.list[item] <= 'Z';
 	}
+	
+	public boolean isFood() {
+		return item == BoxTypes.FOOD;
+	}
+
+	public boolean isBlock() {
+		return item == BoxTypes.BLOCK;
+	}
 }

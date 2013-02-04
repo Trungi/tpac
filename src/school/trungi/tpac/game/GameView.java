@@ -3,8 +3,11 @@ package school.trungi.tpac.game;
 import java.io.FileInputStream;
 import java.util.Timer;
 
+import school.trungi.tpac.GameActivity;
+import school.trungi.tpac.common.Box;
 import school.trungi.tpac.common.BoxView;
 import school.trungi.tpac.common.Map;
+import school.trungi.tpac.mooveable.Ghost;
 import school.trungi.tpac.mooveable.Pacman;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -18,6 +21,8 @@ public class GameView extends BoxView {
 	protected boolean running = true;
 	protected Timer timer;
 	protected Pacman pacman;
+	protected Ghost ghost;
+	protected StatsView stats;
 	
 	public GameView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -52,6 +57,7 @@ public class GameView extends BoxView {
 		
 		/* Draw mooveables */
 		pacman.draw(canvas, paint, marginLeft, marginTop);
+		ghost.draw(canvas, paint, marginLeft, marginTop);
 	}
 
 	
@@ -59,13 +65,23 @@ public class GameView extends BoxView {
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 
-		pacman = new Pacman(0, 0, m, n, size, getResources());
+		pacman = new Pacman(0, 0, m, n, size, getResources(), map);
+		ghost = new Ghost(0, 0, m, n, size, getResources(), map);
 	}
 
 	public void redraw() {
 		try {
 			pacman.move();
-			this.invalidate();
+			ghost.move();
+			
+			if (map.get(pacman.getX(), pacman.getY()).isFood()) {
+				map.set(pacman.getX(), pacman.getY(), new Box());
+				stats.eat();
+			}
+				
+			if (stats.getFood() != 0) {
+				this.invalidate();
+			}
 		} catch (NullPointerException e) {}
 	}
 
@@ -73,4 +89,8 @@ public class GameView extends BoxView {
 		return running;
 	}
 
+	public void init(StatsView s) {
+		stats = s;
+		stats.setMap(map);
+	}
 }

@@ -12,7 +12,7 @@ public class MainActivity extends Activity {
 	public final static String TAG = "MainActivity";
 
     @Override
-    public void onCreate(Bundle savedInstanceState) { 
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); 
     }
@@ -24,15 +24,15 @@ public class MainActivity extends Activity {
     }
     
     public void createNewLevel(View v) {
-    	Intent intent = new Intent(this, EditorWelcomeActivity.class);
+    	//Intent intent = new Intent(this, EditorWelcomeActivity.class);
     	
     	// this is just a debug hack
-    	/*
+    	
     	Intent intent = new Intent(this, CreateLevelActivity.class);
 		intent.putExtra("level_name", "new name");
 		intent.putExtra("sizeX", 25);
 		intent.putExtra("sizeY", 25);
-    	*/// end of debug
+    	
 		
     	startActivity(intent);
     }

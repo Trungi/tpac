@@ -6,6 +6,7 @@ import school.trungi.tpac.common.BoxView;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -16,16 +17,10 @@ public class EditorView extends BoxView {
 	protected EditorButton button;
 	private int INVISIBLE_BOX = BoxTypes.INVISIBLE_BOX;
 
-	public EditorView(Context context) {
-		super(context);
-		editorInit(m, n);
-	}
-
 	public EditorView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		editorInit(m, n);
 	}
-
 	public EditorView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		editorInit(m, n);
@@ -47,7 +42,7 @@ public class EditorView extends BoxView {
 	public void setBox(int clickX, int clickY) {
 		int i = (clickX - marginLeft) / size;
 		int j = (clickY - marginTop) / size;
-			 
+			 Log.d("setBox", i + " " + j);
 		try {
 			if (button.getCurrent() == BoxTypes.EMPTY_BOX) {
 				if (map.get(i, j).toString().equals(".")) {
@@ -100,7 +95,7 @@ public class EditorView extends BoxView {
 		} catch (CanNotPutException e) {
 			if (i != lastI && j != lastJ) ;
 			//	Toast.makeText(this.getContext(), R.string.not_empty, Toast.LENGTH_SHORT).show();
-		}
+		} catch (ArrayIndexOutOfBoundsException e) {}
 	}
 	
 	@Override
