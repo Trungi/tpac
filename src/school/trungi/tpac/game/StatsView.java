@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 public class StatsView extends View {
@@ -28,7 +27,7 @@ public class StatsView extends View {
 					food++;
 				}
 			}
-		} 
+		}
 	}
 	
 	public void eat() {

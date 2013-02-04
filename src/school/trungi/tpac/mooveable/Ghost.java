@@ -7,7 +7,7 @@ import school.trungi.tpac.common.Map;
 import android.content.res.Resources;
 
 public class Ghost extends Mooveable {
-	Random generator = new Random(233);
+	Random generator = new Random(System.currentTimeMillis());
 	
 	public Ghost(int x, int y, int m, int n, int size, Resources resources, Map map) {
 		super(x, y, m, n, size, resources, map);
@@ -15,9 +15,12 @@ public class Ghost extends Mooveable {
 	}
 	
 	public void computeDirection() {
-		if (Math.abs(generator.nextInt()) % 4 == 1) {
-			direction = Math.abs(generator.nextInt()) % 4;
+		if (Math.abs(System.currentTimeMillis()) % 4 == 1) {
+			
+			direction = Math.abs(generator.nextInt() + 
+					(int)(System.nanoTime()%100)) % 4;
 		}
+		
 	}
 	
 	public void move() {

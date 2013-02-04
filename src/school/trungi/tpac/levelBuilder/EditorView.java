@@ -1,14 +1,15 @@
 package school.trungi.tpac.levelBuilder;
 
+import school.trungi.tpac.R;
 import school.trungi.tpac.common.Box;
 import school.trungi.tpac.common.BoxTypes;
 import school.trungi.tpac.common.BoxView;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 
 public class EditorView extends BoxView {
@@ -30,7 +31,9 @@ public class EditorView extends BoxView {
 		this.setOnTouchListener(new View.OnTouchListener() {
 			
 			public boolean onTouch(View v, MotionEvent event) {
-				setBox((int)event.getX(), (int)event.getY());
+				int i = ((int)event.getX() - marginLeft) / size;
+				int j = ((int)event.getY() - marginTop) / size;
+				setBox(i, j);
 				invalidate();
 				return true;
 			}
@@ -39,10 +42,7 @@ public class EditorView extends BoxView {
 	
 	private int lastI = -1, lastJ = -1;
 	
-	public void setBox(int clickX, int clickY) {
-		int i = (clickX - marginLeft) / size;
-		int j = (clickY - marginTop) / size;
-			 Log.d("setBox", i + " " + j);
+	public void setBox(int i, int j) {
 		try {
 			if (button.getCurrent() == BoxTypes.EMPTY_BOX) {
 				if (map.get(i, j).toString().equals(".")) {
@@ -94,7 +94,7 @@ public class EditorView extends BoxView {
 			}
 		} catch (CanNotPutException e) {
 			if (i != lastI && j != lastJ) ;
-			//	Toast.makeText(this.getContext(), R.string.not_empty, Toast.LENGTH_SHORT).show();
+			//Toast.makeText(this.getContext(), R.string.not_empty, Toast.LENGTH_SHORT).show();
 		} catch (ArrayIndexOutOfBoundsException e) {}
 	}
 	

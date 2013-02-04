@@ -16,6 +16,8 @@ public class BoxTypes {
 	public static final int INVISIBLE_BOX = -1;
 	public static final int FOOD = 3;
 	public static final int BLOCK = 1;
+	public static final int PACMAN = 4;
+	public static final int GHOST = 5;
 	
 	public BoxTypes(Resources r,int size, int bigSize) {
         bitmaps = new Bitmap[Rlist.length];

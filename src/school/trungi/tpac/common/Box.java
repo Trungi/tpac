@@ -31,4 +31,12 @@ public class Box {
 	public boolean isBlock() {
 		return item == BoxTypes.BLOCK;
 	}
+
+	public boolean isPacman() {
+		return item == BoxTypes.PACMAN;
+	}
+
+	public boolean isGhost() {
+		return item == BoxTypes.GHOST;
+	}
 }

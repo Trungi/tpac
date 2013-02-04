@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
 		intent.putExtra("level_name", "new name");
 		intent.putExtra("sizeX", 25);
 		intent.putExtra("sizeY", 25);
+		intent.putExtra("buttons", true);
     	
 		
     	startActivity(intent);

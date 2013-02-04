@@ -7,6 +7,7 @@ import java.io.IOException;
 import school.trungi.tpac.common.Map;
 import school.trungi.tpac.levelBuilder.EditorButton;
 import school.trungi.tpac.levelBuilder.EditorView;
+import school.trungi.tpac.levelBuilder.EditorWithButtonsView;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -18,22 +19,31 @@ public class CreateLevelActivity extends Activity {
 
 	public final static String TAG = "CreateLevelActivity";
 	private int y, x;
+	private boolean buttons;
 	private String levelName;
 	private EditorButton b;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.editor_layout);
+		super.onCreate(savedInstanceState); 
 		
 		levelName = (String) getIntent().getStringExtra("level_name");
 		x = getIntent().getIntExtra("sizeX", -1);
 		y = getIntent().getIntExtra("sizeY", -1);
+		buttons = getIntent().getBooleanExtra("buttons", true);
+		
+		if (buttons) {
+			this.setContentView(R.layout.editor_with_buttons);
+			ewb = (EditorWithButtonsView) findViewById(R.id.editor);
+		} else {
+			this.setContentView(R.layout.editor_no_buttons);
+		}
 	}
 	
 	public void onStart() {
 		super.onStart();
 		b = (EditorButton) findViewById(R.id.editor_field);
+		
 		EditorView v = (EditorView) findViewById(R.id.editor);
 		v.setButton(b);
 		v.setMapSize(x, y);
@@ -68,5 +78,28 @@ public class CreateLevelActivity extends Activity {
 	public void decPosition(View v) {
 		b.setPosition(-1);
 		b.invalidate();
+	}
+	
+	/////////
+	EditorWithButtonsView ewb;
+	
+	public void clickUp(View v) { 
+		ewb.clickUp();
+	}
+	
+	public void clickLeft(View v) {
+		ewb.clickLeft();
+	}
+	
+	public void clickRight(View v) {
+		ewb.clickRight();
+	}
+	
+	public void clickDown(View v) {
+		ewb.clickDown();
+	}
+	
+	public void clickConfirm(View v) {
+		ewb.clickConfirm();
 	}
 }

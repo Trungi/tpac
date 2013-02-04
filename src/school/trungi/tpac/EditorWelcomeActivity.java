@@ -1,9 +1,9 @@
 package school.trungi.tpac;
 import android.app.Activity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,6 +20,7 @@ public class EditorWelcomeActivity extends Activity {
 		EditText name = ((EditText)findViewById(R.id.level_name));
 		EditText x = ((EditText)findViewById(R.id.sizeX));
 		EditText y = ((EditText)findViewById(R.id.sizeY));
+		CheckBox button = ((CheckBox)findViewById(R.id.show_arrows));
 		
 		if (name.length() == 0) {
 			Toast.makeText(this, R.string.name_too_short, Toast.LENGTH_SHORT).show();
@@ -48,6 +49,7 @@ public class EditorWelcomeActivity extends Activity {
 		intent.putExtra("level_name", name.getText().toString());
 		intent.putExtra("sizeX", sizeX);
 		intent.putExtra("sizeY", sizeY);
+		intent.putExtra("buttons", button.isChecked());
 		
     	startActivity(intent);
     	finish();

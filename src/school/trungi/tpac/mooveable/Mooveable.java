@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 public abstract class Mooveable {
 	protected int posX, posY;
@@ -52,6 +51,10 @@ public abstract class Mooveable {
 	
 
 	public void move() {
+		countPos();
+	}
+	
+	protected void countPos() {
 		int oldX = posX, oldY = posY;
 		
 		switch (direction) {
