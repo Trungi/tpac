@@ -39,4 +39,8 @@ public class Box {
 	public boolean isGhost() {
 		return item == BoxTypes.GHOST;
 	}
+	
+	public boolean isFruit() {
+		return item == BoxTypes.FRUIT;
+	}
 }

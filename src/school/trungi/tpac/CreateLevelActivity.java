@@ -52,6 +52,35 @@ public class CreateLevelActivity extends Activity {
 	public void saveMap(View v) {
 		Map map = ((EditorView) findViewById(R.id.editor)).getMap();
 
+		boolean startGhost = false, startPacman = false, food = false;
+		
+		for (int i=0; i<map.getM(); i++) {
+			for (int j=0; j<map.getN(); j++) {
+				if (map.get(i, j).isGhost()) {
+					startGhost = true;
+				}
+				if (map.get(i, j).isPacman()) {
+					startPacman = true;
+				}
+				if (map.get(i, j).isFood()) {
+					food = true;
+				}
+			}
+		}
+		
+		if (!startGhost) {
+			Toast.makeText(this, "Please define starting point for ghosts", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		if (!startPacman) {
+			Toast.makeText(this, "Please define starting point for pacman", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		if (!food) {
+			Toast.makeText(this, "Please insert at least one food for pacman", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
 		try {
 			FileOutputStream output = openFileOutput(levelName, Context.MODE_PRIVATE);
 			
@@ -73,11 +102,13 @@ public class CreateLevelActivity extends Activity {
 	public void incPosition(View v) {
 		b.setPosition(1);
 		b.invalidate();
+		if (buttons) ewb.invalidate();
 	}
 	
 	public void decPosition(View v) {
 		b.setPosition(-1);
 		b.invalidate();
+		if (buttons) ewb.invalidate();
 	}
 	
 	/////////

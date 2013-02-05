@@ -57,7 +57,7 @@ public class Map {
 	public Bitmap getBitmap(int i, int j) {
 		int index = map[i][j].item;
 		
-		if (index != BoxTypes.INVISIBLE_BOX) {
+		if (index != BoxTypes.INVISIBLE_BOX && index < boxes.bitmaps.length) {
 			return boxes.bitmaps[index];
 		} else {
 			return null;

@@ -1,5 +1,6 @@
 package school.trungi.tpac.levelBuilder;
 
+import school.trungi.tpac.common.BoxTypes;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -53,6 +54,10 @@ public class EditorWithButtonsView extends EditorView {
 	public void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		
-		canvas.drawRect(getX(curX), getY(curY), getX(curX)+size, getY(curY)+size, paint);
-	}
+		if (BoxTypes.list[button.getCurrent()] > 'Z') {
+			canvas.drawRect(getX(curX), getY(curY), getX(curX)+size, getY(curY)+size, paint);
+		} else {
+			canvas.drawRect(getX(curX), getY(curY), getX(curX)+2*size, getY(curY)+2*size, paint);
+		}
+		}
 }

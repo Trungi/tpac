@@ -26,6 +26,7 @@
 	 	android:id="@+id/editor_field"
 		android:layout_width="40dp"
         android:layout_height="40dp"
+	    android:onClick="incPosition"
         android:layout_below="@id/editor"
         android:layout_toRightOf="@id/inc_button"
         android:layout_marginLeft="20dp" />

@@ -36,7 +36,7 @@ public class GameView extends BoxView {
 			
 			public boolean onTouch(View v, MotionEvent event) {
 				pacman.computeDirection((int)event.getX(), (int)event.getY(), 
-						(int)width, (int)height);
+						(int)width, (int)height, getX(pacman.getX()), getY(pacman.getY()));
 				return true;
 			}
 		});
@@ -111,6 +111,11 @@ public class GameView extends BoxView {
 			if (map.get(pacman.getX(), pacman.getY()).isFood()) {
 				map.set(pacman.getX(), pacman.getY(), new Box());
 				stats.eat();
+			}
+			
+			if (map.get(pacman.getX(), pacman.getY()).isFruit()) {
+				map.set(pacman.getX(), pacman.getY(), new Box());
+				stats.eatFruit();
 			}
 			
 			for (int i=0; i<4; i++) {

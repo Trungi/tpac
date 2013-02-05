@@ -35,13 +35,6 @@ public class EditorButton extends BoxView {
 	}
 	
 	public void initClick() {
-		this.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View arg0) {
-				setPosition(1);
-				invalidate();
-			}
-		});
 	}
 	
 	@Override

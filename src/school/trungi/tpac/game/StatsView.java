@@ -40,6 +40,12 @@ public class StatsView extends View {
 		invalidate();
 	}
 	
+
+	public void eatFruit() {
+		score += 30000;
+		invalidate();
+	}
+	
 	public void kill() {
 		lives--;
 		invalidate();
