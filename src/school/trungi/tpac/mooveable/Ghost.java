@@ -11,7 +11,7 @@ public class Ghost extends Mooveable {
 	
 	public Ghost(int x, int y, int m, int n, int size, Resources resources, Map map) {
 		super(x, y, m, n, size, resources, map);
-		this.setBitMap(R.drawable.ic_launcher);
+		this.setBitMap(R.drawable.blueghost);
 	}
 	
 	public void computeDirection() {

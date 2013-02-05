@@ -14,7 +14,7 @@ public class GreenGhost extends Ghost {
 			Resources resources, Map map, Pacman pacman) {
 		super(x, y, m, n, size, resources, map);
 		
-		this.setBitMap(R.drawable.berry);
+		this.setBitMap(R.drawable.greenghost);
 		this.pacman = pacman;
 		generator = new Random(System.nanoTime());
 	}

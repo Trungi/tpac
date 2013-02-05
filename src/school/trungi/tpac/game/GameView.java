@@ -17,6 +17,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 
 public class GameView extends BoxView {
 	
@@ -65,6 +66,9 @@ public class GameView extends BoxView {
 		for (int i=0; i<4; i++){
 			ghosts[i].draw(canvas, paint, marginLeft, marginTop);
 		}
+		
+		/* Draw stats */
+		stats.draw(canvas, marginLeft, getY(n+1));
 	}
 
 	
@@ -94,6 +98,16 @@ public class GameView extends BoxView {
 			}
 		}
 	}
+	
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
+		int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
+		int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
+		this.setMeasuredDimension(parentWidth, (int)(parentHeight*0.9));
+		this.setLayoutParams(new LinearLayout.LayoutParams(parentWidth, (int)(parentHeight*0.9)));
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+	}
+
 
 	private boolean finished = false;
 	public void redraw() {
@@ -154,9 +168,8 @@ public class GameView extends BoxView {
 		return running;
 	}
 
-	public void init(StatsView s, GameActivity ga) {
-		stats = s;
+	public void init(GameActivity ga) {
+		stats = new StatsView(map);
 		this.ga = ga;
-		stats.setMap(map);
 	}
 }

@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import school.trungi.tpac.game.FinishView;
 import school.trungi.tpac.game.GameView;
-import school.trungi.tpac.game.StatsView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,8 +39,7 @@ public class GameActivity extends Activity {
 			
 			in.close();
 			
-
-			game.init((StatsView) findViewById(R.id.stats), this);
+			game.init(this);
 		} catch (FileNotFoundException e) {
 			Toast.makeText(this, R.string.not_found, Toast.LENGTH_SHORT).show();
 			finish();

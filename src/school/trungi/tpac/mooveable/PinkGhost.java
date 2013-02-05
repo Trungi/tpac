@@ -14,7 +14,7 @@ public class PinkGhost extends Ghost {
 			Resources resources, Map map, Pacman pacman) {
 		super(x, y, m, n, size, resources, map);
 		
-		this.setBitMap(R.drawable.pacman_spawn);
+		this.setBitMap(R.drawable.pinkghost);
 		this.pacman = pacman;
 		generator = new Random(System.nanoTime());
 	}

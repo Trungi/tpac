@@ -1,13 +1,10 @@
 package school.trungi.tpac.game;
 
 import school.trungi.tpac.common.Map;
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.util.AttributeSet;
-import android.view.View;
 
-public class StatsView extends View {
+public class StatsView {
 
 	protected Map map;
 	protected int lives = 3;
@@ -15,14 +12,10 @@ public class StatsView extends View {
 	protected long score = 0;
 	protected long start;
 	protected Paint paint = new Paint();
-	
-	public StatsView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		start = System.currentTimeMillis();
-	}
 
-	public void setMap(Map map) {
+	public StatsView(Map map) {
 		this.map = map;
+		paint.setColor(0xff101010);
 		
 		for (int i=0; i<map.getM(); i++) {
 			for (int j=0; j<map.getN(); j++) {
@@ -36,19 +29,15 @@ public class StatsView extends View {
 	public void eat() {
 		food--;
 		score += ((120000 - (System.currentTimeMillis() - start)) + 30000)/10;
-				
-		invalidate();
 	}
 	
 
 	public void eatFruit() {
 		score += 30000;
-		invalidate();
 	}
 	
 	public void kill() {
 		lives--;
-		invalidate();
 	}
 	
 	public int getLives() {
@@ -63,13 +52,10 @@ public class StatsView extends View {
 		return score;
 	}
 	
-	public void onDraw(Canvas canvas) {
-		super.onDraw(canvas);
-		paint.setColor(0xff101010);
+	public void draw(Canvas canvas,int x, int y) {
 		
 		canvas.drawText("Lives " + lives + ", food: " + food + " score: " +
-				score, 20, 20, paint);
+				score, x, y, paint);
 		
-	}
-	
+	}	
 }

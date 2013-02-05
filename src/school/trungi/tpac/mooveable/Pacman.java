@@ -13,7 +13,7 @@ public class Pacman extends Mooveable {
 	public Pacman(int x, int y, int m, int n, int size, Resources r, Map map) {
 		super(x, y, m, n, size, r, map);
 
-		this.setBitMap(R.drawable.logo);
+		this.setBitMap(R.drawable.pacman);
 	}
 
 	public void computeDirection(int x, int y, int width, int height,

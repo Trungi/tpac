@@ -11,7 +11,7 @@ public class RedGhost extends Ghost {
 			Resources resources, Map map, Pacman pacman) {
 		super(x, y, m, n, size, resources, map);
 		
-		this.setBitMap(R.drawable.ghost_spawn);
+		this.setBitMap(R.drawable.redghost);
 		this.pacman = pacman;
 	}
 	
